@@ -8,6 +8,7 @@ public interface ClienteDAO {
 	void insert(Cliente c);
 	void update(Cliente c);
 	void delete(String dni);
-	ArrayList<Cliente> findall();
+	ArrayList<Cliente> findAll();
 	Cliente findByDni(String dni);
+	
 }

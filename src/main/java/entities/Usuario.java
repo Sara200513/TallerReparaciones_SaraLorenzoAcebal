@@ -5,9 +5,9 @@ public class Usuario {
 	String nombreUsuario;
 	String dni;
 	String password;
-	String rol;
+	Rol rol;
 	
-	public Usuario(int idUsuario, String nombreUsuario, String dni, String password, String rol) {
+	public Usuario(int idUsuario, String nombreUsuario, String dni, String password, Rol rol) {
 		super();
 		this.idUsuario = idUsuario;
 		this.nombreUsuario = nombreUsuario;
@@ -40,11 +40,11 @@ public class Usuario {
 		this.password = password;
 	}
 
-	public String getRol() {
+	public Rol getRol() {
 		return rol;
 	}
 
-	public void setRol(String rol) {
+	public void setRol(Rol rol) {
 		this.rol = rol;
 	}
 

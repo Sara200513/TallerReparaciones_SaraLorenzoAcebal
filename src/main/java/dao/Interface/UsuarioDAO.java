@@ -2,12 +2,16 @@ package dao.Interface;
 
 import java.util.ArrayList;
 
-import dao.mysql.Strign;
-import dao.mysql.Usuario;
+
+import entities.Usuario;
+import dao.mysql.*;
 
 public interface UsuarioDAO {
-	boolean login(Strign dni, String password);
-	int insert(Usuario u);
+	
+	void update(Usuario u);
+	void delete(String dni);
+	boolean login(String dni, String password);
+	void insert(Usuario u);
 	ArrayList<Usuario> findall();
 	Usuario findByNombre(String nombre);
 }
