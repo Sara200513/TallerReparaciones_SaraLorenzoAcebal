@@ -3,12 +3,14 @@ package entities;
 public class Vehiculo {
 	int idVehiculo;
 	String matricula;
+	String marca;
 	String modelo;
 	
-	public Vehiculo(int idVehiculo, String matricula, String modelo) {
+	public Vehiculo(int idVehiculo, String marca, String matricula, String modelo) {
 		super();
 		this.idVehiculo = idVehiculo;
 		this.matricula = matricula;
+		this.marca = marca;
 		this.modelo = modelo;
 	}
 
@@ -34,6 +36,14 @@ public class Vehiculo {
 
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
+	}
+	
+	public String getMarca() {
+		return marca;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
 	}
 	
 	

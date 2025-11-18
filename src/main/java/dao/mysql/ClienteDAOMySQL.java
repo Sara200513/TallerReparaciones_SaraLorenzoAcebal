@@ -65,9 +65,9 @@ public class ClienteDAOMySQL implements ClienteDAO {
 
 			int filas = pst.executeUpdate();
 			if (filas > 0) {
-				System.out.println("Persona con id 1 eliminada correctamente");
+				System.out.println("Persona con id "+ 1+ " eliminada correctamente");
 			} else {
-				System.out.println("Persona con id 1 no se ha encontrado en la base de datos");
+				System.out.println("Persona con id " + 1 + " no se ha encontrado en la base de datos");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -88,29 +88,26 @@ public class ClienteDAOMySQL implements ClienteDAO {
 		
 		@Override
 		public Cliente findByDni(String dni) {
-			// TODO Auto-generated method stub
+			try {
+				String sql = "SELET id_cliente, nombre, telefono, email FROM cliente WHERE dni = ?; ";
+				PreparedStatement pst = conexion.prepareStatement(sql);
+	
+				pst.setString(1, dni);
+				int filas = pst.executeUpdate();
+				if (filas > 0) {
+					System.out.println("Persona con dni"+ 1 +" eliminada correctamente");
+				} else {
+					System.out.println("Persona con dni"+  1 +" no se ha encontrado en la base de datos");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			return null;
 		}
 
 		
 	}
-//	@Override
-//	public Cliente findByDni(String dni) {
-//		try {
-//			String sql = "SELET id_cliente, nombre, telefono, email FROM cliente WHERE dni = ?; ";
-//			PreparedStatement pst = conexion.prepareStatement(sql);
-//
-//			pst.setString(1, dni);
-//			int filas = pst.executeUpdate();
-//			if (filas > 0) {
-//				System.out.println("Persona con dni 1 eliminada correctamente");
-//			} else {
-//				System.out.println("Persona con ni 1 no se ha encontrado en la base de datos");
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//	}
+
 
 
 
