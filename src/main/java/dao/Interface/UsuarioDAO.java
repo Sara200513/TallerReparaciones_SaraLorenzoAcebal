@@ -2,9 +2,8 @@ package dao.Interface;
 
 import java.util.ArrayList;
 
-
+import entities.Rol;
 import entities.Usuario;
-import dao.mysql.*;
 
 public interface UsuarioDAO {
 	
@@ -14,4 +13,7 @@ public interface UsuarioDAO {
 	void insert(Usuario u);
 	ArrayList<Usuario> findall();
 	Usuario findByNombre(String nombre);
+	void updatePassword(String password, String nuevaPassword);
+	//void findByRol(Rol rol);
+	ArrayList<Usuario> findByRol(Rol rol);
 }

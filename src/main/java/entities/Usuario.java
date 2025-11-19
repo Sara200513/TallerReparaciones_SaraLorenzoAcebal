@@ -1,11 +1,11 @@
 package entities;
 
 public class Usuario {
-	int idUsuario;
-	String nombreUsuario;
-	String dni;
-	String password;
-	Rol rol;
+	private int idUsuario;
+	private String nombreUsuario;
+	private String dni;
+	private String password;
+	private Rol rol;
 	
 	public Usuario(int idUsuario, String nombreUsuario, String dni, String password, Rol rol) {
 		super();

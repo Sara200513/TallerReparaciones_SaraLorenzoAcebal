@@ -1,17 +1,19 @@
 package entities;
 
 public class Vehiculo {
-	int idVehiculo;
-	String matricula;
-	String marca;
-	String modelo;
+	private int idVehiculo;
+	private String matricula;
+	private String marca;
+	private String modelo;
+	private int cliente_id;
 	
-	public Vehiculo(int idVehiculo, String marca, String matricula, String modelo) {
+	public Vehiculo(int idVehiculo, String marca, String matricula, String modelo, int cliente_id) {
 		super();
 		this.idVehiculo = idVehiculo;
 		this.matricula = matricula;
 		this.marca = marca;
 		this.modelo = modelo;
+		this.cliente_id= cliente_id;
 	}
 
 	public int getIdVehiculo() {
@@ -44,6 +46,14 @@ public class Vehiculo {
 
 	public void setMarca(String marca) {
 		this.marca = marca;
+	}
+
+	public int getCliente_id() {
+		return cliente_id;
+	}
+
+	public void setCliente_id(int cliente_id) {
+		this.cliente_id = cliente_id;
 	}
 	
 	

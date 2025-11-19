@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import dao.DBConnection;
 import dao.Interface.VehiculoDAO;
-import entities.Cliente;
+
 import entities.Vehiculo;
 
 public class VehiculoMySQL implements VehiculoDAO{
@@ -18,14 +18,14 @@ public class VehiculoMySQL implements VehiculoDAO{
 	}
 
 	@Override
-	public void inser(Vehiculo v, Cliente c) {
+	public void inser(Vehiculo v) {
 		try {
 			String sql = "INSERT INTO vehiculo (matricula, marca, modelo, cliente_id) VALUES(?, ?, ?, ?)";
 			PreparedStatement pst = conexion.prepareStatement(sql);
 			pst.setString(1, v.getMatricula());
 			pst.setString(2, v.getMarca());
 			pst.setString(3, v.getModelo());
-			pst.setInt(4, c.getId_Cliente());
+			pst.setInt(4, v.getCliente_id());
 
 			int resul = pst.executeUpdate();
 			System.out.println("Resultado de insercion: " + resul);
@@ -85,9 +85,9 @@ public class VehiculoMySQL implements VehiculoDAO{
 			pst.setString(1, matricula);
 			int filas = pst.executeUpdate();
 			if (filas > 0) {
-				System.out.println(""+ 1 +" eliminada correctamente");
+				System.out.println("Se ha encontrado el vehiculo con la matricula"+ 1 );
 			} else {
-				System.out.println("Persona con dni"+  1 +" no se ha encontrado en la base de datos");
+				System.out.println("No se ha encontrado el vehiculo con la matricula"+  1 );
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

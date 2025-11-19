@@ -1,11 +1,11 @@
 package entities;
 
 public class Cliente {
-	int idCliente;
-	String dni;
-	String nombre;
-	String telefono;
-	String email;
+	private int idCliente;
+	private String dni;
+	private String nombre;
+	private String telefono;
+	private String email;
 	
 
 	public Cliente(String dni, String nombre, String telefono, String email) {

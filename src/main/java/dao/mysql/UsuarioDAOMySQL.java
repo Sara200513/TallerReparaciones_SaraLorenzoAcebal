@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dao.DBConnection;
-
+import entities.Rol;
 import entities.Usuario;
 import dao.Interface.UsuarioDAO;
 
@@ -123,6 +123,18 @@ public class UsuarioDAOMySQL implements UsuarioDAO {
 			e.printStackTrace();
 		}
 
+	}
+
+	@Override
+	public void updatePassword(String password, String nuevaPassword) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ArrayList<Usuario> findByRol(Rol rol) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
