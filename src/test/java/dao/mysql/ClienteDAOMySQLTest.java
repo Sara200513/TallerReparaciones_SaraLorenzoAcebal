@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import entities.Cliente;
-import dao.mysql.ClienteDAOMySQL;
 
 public class ClienteDAOMySQLTest {
 
