@@ -62,8 +62,29 @@ public class ReparacionDAOMySQL implements ReparacionDAO {
 	}
 
 	@Override
-	public void delete(Reparacion r) {
-		// TODO Auto-generated method stub
+	public void delete(Reparacion r, Strig matricula) {
+		try {
+			String sqlV = "SELECT id_vehiculo FROM vehiculo WHERE matricula = ?;";
+			PreparedStatement pstV = conexion.prepareStatement(sqlV);
+			pstV.setString(1, matricula);
+			var rs = pstV.executeQuery();
+			
+			 if (rs.next()) {
+				 int vehiculoId = rs.getInt("id_vehiculo");
+		     
+				 String sqlD = "DELETE FROM reparacion WHERE vehiculo_id = ?;";
+				 PreparedStatement pstD = conexion.prepareStatement(sqlD);
+				 pstD.setInt(1, r.getVehiculo_id);
+				 
+				 int filas = pstD.executeUpdate();
+				 System.out.println("Reparaciones eliminadas: " + filas);
+			 } else {
+				 System.out.println("NO se encontó a ningún vehículo con la matricula: " + matricula);
+			 }
+		} catch (SQLException e) {
+			System.out.println("> NOK: " + e.getMessage());
+		}
+	}
 		
 	}
 
