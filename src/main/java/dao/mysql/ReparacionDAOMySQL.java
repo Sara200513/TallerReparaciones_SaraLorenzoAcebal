@@ -80,7 +80,7 @@ public class ReparacionDAOMySQL implements ReparacionDAO {
 				 int filas = pstD.executeUpdate();
 				 System.out.println("Reparaciones eliminadas: " + filas);
 			 } else {
-				 System.out.println("NO se encontó a ningún vehículo con la matricula: " + matricula);
+				 System.out.println("NO se encontó  a ningún vehículo con la matricula: " + matricula);
 			 }
 		} catch (SQLException e) {
 			System.out.println("> NOK: " + e.getMessage());
