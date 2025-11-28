@@ -62,7 +62,8 @@ public class ReparacionDAOMySQL implements ReparacionDAO {
 	}
 
 	@Override
-	public void delete(String matricula) {
+
+	public void delete(Reparacion r, Strig matricula) {
 		try {
 			String sqlV = "SELECT id_vehiculo FROM vehiculo WHERE matricula = ?;";
 			PreparedStatement pstV = conexion.prepareStatement(sqlV);
@@ -84,6 +85,8 @@ public class ReparacionDAOMySQL implements ReparacionDAO {
 		} catch (SQLException e) {
 			System.out.println("> NOK: " + e.getMessage());
 		}
+	}
+		
 	}
 
 	@Override

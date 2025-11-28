@@ -49,7 +49,7 @@ public class UsuarioDAOMySQL implements UsuarioDAO {
 			pst.setString(1, u.getDni());
 			pst.setString(2, u.getNombreUsuario());
 			pst.setString(3, u.getPassword());
-			pst.setString(4, u.getRol().name());
+			pst.setString(4, u.getRol().toString);
 
 			int resul = pst.executeUpdate();
 			System.out.println("Resultado de insercion: " + resul);
@@ -61,23 +61,45 @@ public class UsuarioDAOMySQL implements UsuarioDAO {
 	@Override
 	public ArrayList<Usuario> findall() {
 		ArrayList<Usuario> usuarios = new ArrayList<>();
-		usuarios.add(new Usuario(0, null, "Jose", null, null));
-		usuarios.add(new Usuario(0, null, "María", null, null));
-		return usuarios;
+		String sql = "SELECT * FROM usuario";
+		try {
+			PreparedStatement pst = conexion.prepareStatement(sql);
+			ResultDet rs = pst.executeQuery();
+			while (rs.next()) {
+				Usuario u = new Usuario(
+						rs.getString("dni"),
+						rs.getString("nombre"),
+						rs.getString("password"),
+						Raol.valueOf(rs.getString("rol"))
+				);
+				usuarios.add(u);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		}
 	}
 
 	@Override
 	public Usuario findByNombre(String nombre) {
+		Usaurio usuario = null;
+		
 		try {
 			String sql = "SELET id_usuario, dni, password, rol FROM cliente WHERE nombre_usuario = ?; ";
 			PreparedStatement pst = conexion.prepareStatement(sql);
 
 			pst.setString(1, nombre);
-			int filas = pst.executeUpdate();
-			if (filas > 0) {
-				System.out.println("Usuario con nombre" + 1 + " eliminada correctamente");
-			} else {
-				System.out.println("Usuario con nombre" + 1 + " no se ha encontrado en la base de datos");
+			
+			try(ResultSet rs = pst.exexuteQuery()){
+				if (rs.next()) {
+					usuario = new Usuario();
+					usuario.setId_usuario(rs.getInt("id_usuario"));
+					usuario.setDni(rs.getString("dni"));
+					usuario.setNombreUsuario(rs.getString("nombre_usuario"));
+					usuario.setPassword(rs.getString("password"));
+					usuario.setRol(Rol.valueof(rs.getString("rol")));
+				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -88,13 +110,13 @@ public class UsuarioDAOMySQL implements UsuarioDAO {
 	@Override
 	public void update(Usuario u) {
 		try {
-			String sql = "UPDATE usuario SET dni = ?, nombre_usuario = ?, password = ?, rol = ? WHERE id_usuario = ?;";
+			String sql = "UPDATE usuario SET nombre_usuario = ?, password = ?, rol = ? WHERE dni = ?;";
 			PreparedStatement pst = conexion.prepareStatement(sql);
-			pst.setString(1, u.getDni());
-			pst.setString(2, u.getNombreUsuario());
-			pst.setString(3, u.getPassword());
-			pst.setString(4, u.getRol().name());
-			pst.setInt(5, u.getIdUsuario());
+			pst.setString(1, u.getNombre_usuario());
+			pst.setString(2, u.getPassword());
+			pst.setString(3, u.getRol().toString());
+			pst.setString(4, u.getDni());
+		
 
 			int filas = pst.executeUpdate();
 			if (filas > 0)
