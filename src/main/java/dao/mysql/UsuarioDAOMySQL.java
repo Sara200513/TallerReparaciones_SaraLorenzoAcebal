@@ -99,6 +99,7 @@ public class UsuarioDAOMySQL implements UsuarioDAO {
 					usuario.setNombreUsuario(rs.getString("nombre_usuario"));
 					usuario.setPassword(rs.getString("password"));
 					usuario.setRol(Rol.valueof(rs.getString("rol")));
+					
 				}
 			}
 		} catch (SQLException e) {
