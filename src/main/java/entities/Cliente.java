@@ -1,17 +1,21 @@
 package entities;
 
 public class Cliente {
-	int idCliente;
-	String nombre;
-	int telefono;
-	String email;
+	private int idCliente;
+	private String dni;
+	private String nombre;
+	private String telefono;
+	private String email;
 	
-	public Cliente(int id_Cliente, String nombre, String email, int telefono) {
-		this.idCliente = id_Cliente;
+
+	public Cliente(String dni, String nombre, String telefono, String email) {
+		
+		this.dni = dni;
 		this.nombre = nombre;
 		this.telefono = telefono;
 		this.email = email;
 	}
+	
 
 	public int getId_Cliente() {
 		return idCliente;
@@ -38,6 +42,21 @@ public class Cliente {
 	}
 	
 	
-	
-	
+	public String getDni() {
+		return dni;
+	}
+
+
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
 }

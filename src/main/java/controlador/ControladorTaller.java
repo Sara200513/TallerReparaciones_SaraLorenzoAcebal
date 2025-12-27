@@ -1,5 +1,13 @@
 package controlador;
 
-public class ControladorTaller {
+import dao.MySQLDAOFactory;
+import dao.mysql.ClienteDAOMySQL;
+import entities.Cliente;
 
+public class ControladorTaller {
+	public static void main(String[] args) {
+		MySQLDAOFactory factory = new MySQLDAOFactory();
+		ClienteDAOMySQL clienteDAO = (ClienteDAOMySQL) factory.getClienteDAO();
+		clienteDAO.insert(new Cliente("53777224G", "Sara", "123456789", "sarala19@educastur.es"));
+	}
 }
